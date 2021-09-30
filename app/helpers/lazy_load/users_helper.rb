@@ -1,0 +1,2 @@
+module LazyLoad::UsersHelper
+end
