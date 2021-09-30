@@ -1,0 +1,2 @@
+module LazyLoad::PostsHelper
+end
