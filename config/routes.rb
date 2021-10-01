@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root to: "homescreens#show"
+  resource :homescreen, only: :show
+
   resources :users
   resources :posts
 
