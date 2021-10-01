@@ -1,1 +1,1 @@
-<%= post.inspect %>
+<%= render partial: "shared/card", locals: { title: post.title, body: post.body, timestamp: time_ago_in_words(post.updated_at) } %>
