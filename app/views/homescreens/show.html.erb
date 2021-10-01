@@ -1,5 +1,5 @@
 <div data-controller="lazy-load" data-lazy-load-url-value="<%= lazy_load_posts_path %>">
-  <div data-lazy-load-target="output">
+  <div data-lazy-load-target="output" class="d-grid gap-3">
     <% 5.times do |i| %>
       <%= render partial: "shared/card", variants: [:empty] %>
     <% end %>
