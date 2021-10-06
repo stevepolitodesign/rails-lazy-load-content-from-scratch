@@ -15,7 +15,7 @@ export default class extends Controller {
       type: "GET",
       url: this.urlValue,
       success(data) {
-        outputTarget.innerHTML = data.html;
+        outputTarget.innerHTML = data.body.innerHTML;
       }
     })
   }
