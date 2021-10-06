@@ -14,13 +14,20 @@ export default class extends Controller {
     fetch(request)
       .then((response) => {
         if (response.status === 200) {
-          response.text().then((text) => (this.outputTarget.innerHTML = text));
+          response.text().then((text) => (this.renderContent(text)));
         } else {
-          this.outputTarget.innerHTML = errorMessage;
+          this.renderContent(errorMessage);
         }
       })
       .catch((error) => {
-        this.outputTarget.innerHTML = errorMessage;
+        this.renderContent(errorMessage);
       });
+
+      // TODO: Dispatch event
   }
+
+  renderContent(content) {
+    this.outputTarget.innerHTML = content
+  }
+
 }
