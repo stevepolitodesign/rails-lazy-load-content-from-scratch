@@ -30,7 +30,7 @@ export default class extends Controller {
 
   dispatchEvent(eventName) {
     const event = new Event(eventName);
-    document.body.dispatchEvent(event);
+    document.dispatchEvent(event);
   }
 
 }
