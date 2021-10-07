@@ -5,29 +5,32 @@ export default class extends Controller {
   static values = { url: String };
 
   connect() {
-    this.fetchContent();
+    this.request = new Request(this.urlValue)
+    this.fetchContent(this.request);
   }
 
-  fetchContent() {
-    const request = new Request(this.urlValue);
-    const errorMessage = "Could not load data";
+  fetchContent(request) {
     fetch(request)
       .then((response) => {
         if (response.status === 200) {
           response.text().then((text) => (this.renderContent(text)));
         } else {
-          this.renderContent(errorMessage);
+          this.renderContent("Could not load data");
         }
       })
       .catch((error) => {
-        this.renderContent(errorMessage);
+        this.renderContent("Could not load data");
       });
-
-      // TODO: Dispatch event
+    this.dispatchEvent("lazy_load:complete")
   }
 
   renderContent(content) {
     this.outputTarget.innerHTML = content
+  }
+
+  dispatchEvent(eventName) {
+    const event = new Event(eventName);
+    document.body.dispatchEvent(event);
   }
 
 }
