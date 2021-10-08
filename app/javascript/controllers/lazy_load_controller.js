@@ -6,7 +6,12 @@ export default class extends Controller {
 
   connect() {
     this.request = new Request(this.urlValue)
-    this.fetchContent(this.request);
+
+    // Comment this out and uncomment line 14 for faster results.
+    setTimeout(() => {
+      this.fetchContent(this.request);
+    }, 3000);
+    // this.fetchContent(this.request);
   }
 
   fetchContent(request) {

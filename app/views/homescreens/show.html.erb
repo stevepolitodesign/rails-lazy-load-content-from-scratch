@@ -8,7 +8,7 @@
 
 <% content_for :left_column do %>
   <div data-controller="lazy-load" data-lazy-load-url-value="<%= lazy_load_users_path %>">
-    <ul data-lazy-load-target="output" class="list-group list-group-flush">
+    <ul data-lazy-load-target="output" class="list-group list-group-flush list-unstyled">
       <% 5.times do |i| %>
         <li><%= render partial: "shared/card", variants: [:empty] %></li>
       <% end %>
