@@ -5,3 +5,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LazyLoadController from "./lazy_load_controller"
+application.register("lazy-load", LazyLoadController)

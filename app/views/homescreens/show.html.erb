@@ -1,0 +1,17 @@
+<div data-controller="lazy-load" data-lazy-load-url-value="<%= lazy_load_posts_path %>">
+  <div data-lazy-load-target="output" class="d-grid gap-3">
+    <% 5.times do |i| %>
+      <%= render partial: "shared/card", variants: [:empty] %>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :left_column do %>
+  <div data-controller="lazy-load" data-lazy-load-url-value="<%= lazy_load_users_path %>">
+    <ul data-lazy-load-target="output" class="list-group list-group-flush list-unstyled">
+      <% 5.times do |i| %>
+        <li><%= render partial: "shared/card", variants: [:empty] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
