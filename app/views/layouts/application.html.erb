@@ -14,7 +14,12 @@
   </head>
 
   <body>
-    <div class="container">
+    <nav class="navbar sticky-top navbar-light bg-light">
+      <div class="container">
+        <%= link_to "Lazy Load Content in Rails", root_path, class: "navbar-brand" %>
+      </div>
+    </nav>  
+    <div class="container pt-5">
       <div class="row">
         <div class="col">
           <%= yield :left_column %>
