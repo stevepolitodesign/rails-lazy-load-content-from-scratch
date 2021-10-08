@@ -21,11 +21,12 @@ export default class extends Controller {
       .catch((error) => {
         this.renderContent("Could not load data");
       });
-    this.dispatchEvent("lazy_load:complete")
+      
   }
 
   renderContent(content) {
     this.outputTarget.innerHTML = content
+    this.dispatchEvent("lazy_load:complete")
   }
 
   dispatchEvent(eventName) {

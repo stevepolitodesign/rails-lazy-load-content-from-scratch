@@ -12,3 +12,19 @@ import "controllers"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+document.addEventListener("turbolinks:load", function() {
+  initilizeToolTips();
+});
+
+document.addEventListener("lazy_load:complete", function() {
+  initilizeToolTips();
+});
+
+function initilizeToolTips() {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  });
+}
