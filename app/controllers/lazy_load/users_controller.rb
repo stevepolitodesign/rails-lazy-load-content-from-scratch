@@ -3,15 +3,11 @@ class LazyLoad::UsersController < ApplicationController
 
   def index
     @users = User.all
-    respond_to do |format|
-      format.json { render json: { html: render_to_string(partial: "lazy_load/users/user", collection: @users, formats: [:html]) } }
-    end
+    render partial: "lazy_load/users/user", collection: @users
   end
 
   def show
-    respond_to do |format|
-      format.json { render json: { html: render_to_string(partial: "lazy_load/users/user", locals: { user: @user }, formats: [:html]) } }
-    end
+    render partial: "lazy_load/users/user", locals: { user: @user }
   end
 
   private
