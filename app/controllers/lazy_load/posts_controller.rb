@@ -6,10 +6,6 @@ class LazyLoad::PostsController < ApplicationController
     render partial: "lazy_load/posts/post", collection: @posts
   end
 
-  def show
-    render partial: "lazy_load/posts/post", locals: { post: @post }
-  end
-
   private
 
   def set_post

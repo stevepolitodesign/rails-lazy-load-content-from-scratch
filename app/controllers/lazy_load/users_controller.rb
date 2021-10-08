@@ -6,10 +6,6 @@ class LazyLoad::UsersController < ApplicationController
     render partial: "lazy_load/users/user", collection: @users
   end
 
-  def show
-    render partial: "lazy_load/users/user", locals: { user: @user }
-  end
-
   private
 
   def set_user
