@@ -65,4 +65,4 @@ end
 > - We create a [namespaced route and controller](https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing). This isn't required, but it helps keep our 
 endpoints organized. We're also not limited to just `index` actions.
 > - We set a [default](https://guides.rubyonrails.org/routing.html#defining-defaults) for those endpoints to [not render a layout](https://guides.rubyonrails.org/layouts_and_rendering.html#options-for-render). This means that just the raw HTML for the partials will be returned.
-> - We chose to create custom views for  
+> - We choose to create custom views for each end point, but we could use the existing views or partials is we wanted. 
