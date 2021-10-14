@@ -1,24 +1,68 @@
-# README
+# Lazy Load Content in Rails from Scratch
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Demo](./public./demo.png)
 
-Things you may want to cover:
+## Step 1: Create Endpoints
 
-* Ruby version
+1. Generate namespaced controllers.
 
-* System dependencies
+```bash
+rails g controller lazy_load/posts
+rails g controller lazy_load/users
+```
 
-* Configuration
+2. Add namespaced routes.
 
-* Database creation
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  ...
+  namespace :lazy_load do
+    defaults layout: false do
+      resources :posts, only: [:index]
+      resources :users, only: [:index]
+    end
+  end
+end
+```
 
-* Database initialization
+3. Build controller actions.
 
-* How to run the test suite
+```ruby
+# app/controllers/lazy_load/posts_controller.rb
+class LazyLoad::PostsController < ApplicationController
+  def index
+    @posts = Post.all
+    render partial: "lazy_load/posts/post", collection: @posts
+  end
+end
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```ruby
+# app/controllers/lazy_load/posts_controller.rb
+class LazyLoad::UsersController < ApplicationController
+  def index
+    @users = User.all
+    render partial: "lazy_load/users/user", collection: @users
+  end
+end
+```
 
-* Deployment instructions
+4. Build views.
 
-* ...
+```html+ruby
+# app/views/lazy_load/posts/_post.html.erb
+<%= render partial: "shared/card", locals: { title: post.title, body: post.body, timestamp: time_ago_in_words(post.updated_at) } %>
+```
+
+```html+ruby
+# app/views/lazy_load/users/_user.html.erb
+<%= render partial: "shared/list_group", locals: { name: user.name, email: user.email, tooltip: pluralize(user.posts.size, 'Post')  } %>
+```
+
+> **What's Going On Here?**
+> 
+> - We create a [namespaced route and controller](https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing). This isn't required, but it helps keep our 
+endpoints organized. We're also not limited to just `index` actions.
+> - We set a [default](https://guides.rubyonrails.org/routing.html#defining-defaults) for those endpoints to [not render a layout](https://guides.rubyonrails.org/layouts_and_rendering.html#options-for-render). This means that just the raw HTML for the partials will be returned.
+> - We chose to create custom views for  
