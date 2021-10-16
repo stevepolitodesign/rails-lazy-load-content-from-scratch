@@ -2,7 +2,7 @@
 
 Learn how to lazy load content in Rails without Hotwire.
 
-![Demo](./public./demo.png)
+![Demo](./public/demo.gif)
 
 ## References
 
@@ -35,7 +35,6 @@ end
 3. Make a [Fetch request](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to the endpoint and replace the placeholder with the response from the endpoint.
 
 ```js
-// app/javascript/controllers/lazy_load_controller.js
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
@@ -73,7 +72,9 @@ export default class extends Controller {
 
 }
 ```
+
 ## Example
+
 ### Step 1: Create Endpoints
 
 1. Generate namespaced controllers.
@@ -125,7 +126,7 @@ end
 #### Card 
 
 ```html+ruby
-<%# app/views/shared/_card.html.erb %>
+# app/views/shared/_card.html.erb
 <div class="card">
   <div class="card-body">
     <h5 class="card-title"><%= title %></h5>
@@ -138,7 +139,7 @@ end
 #### Placeholder Card Variant
 
 ```html+ruby
-<%# app/views/shared/_card.html+empty.erb %>
+# app/views/shared/_card.html+empty.erb
 <div class="card mb-3">
   <div class="card-body">
     <p aria-hidden="true" class="d-grid gap-3 placeholder-glow">
@@ -152,7 +153,7 @@ end
 #### List Group
 
 ```html+ruby
-<%# app/views/shared/_list_group.html.erb %>
+# app/views/shared/_list_group.html.erb
 <li class="list-group-item d-flex justify-content-between align-items-start">
   <div class="ms-2 me-auto">
     <div class="fw-bold"><%= name %></div>
@@ -169,12 +170,12 @@ end
 #### Post
 
 ```html+ruby
-<%# app/views/lazy_load/posts/_post.html.erb %>
+# app/views/lazy_load/posts/_post.html.erb
 <%= render partial: "shared/card", locals: { title: post.title, body: post.body, timestamp: time_ago_in_words(post.updated_at) } %>
 ```
 #### User
 ```html+ruby
-<%# app/views/lazy_load/users/_user.html.erb
+# app/views/lazy_load/users/_user.html.erb
 <%= render partial: "shared/list_group", locals: { name: user.name, email: user.email, tooltip: pluralize(user.posts.size, 'Post')  } %>
 ```
 
@@ -238,7 +239,7 @@ export default class extends Controller {
 
 2. Use the following markup to connect to the Stimulus Controller.
 
-```hml+ruby
+```html+ruby
 <div data-controller="lazy-load" data-lazy-load-url-value="<%= lazy_load_users_path %>">
   <div data-lazy-load-target="output" class="d-grid gap-3">
     <% 5.times do |i| %>
@@ -292,7 +293,7 @@ end
 3. Add markup to lazy load content users and posts.
 
 ```html+ruby
-<%# app/views/homescreens/show.html.erb %>
+# app/views/homescreens/show.html.erb
 <div data-controller="lazy-load" data-lazy-load-url-value="<%= lazy_load_posts_path %>">
   <div data-lazy-load-target="output" class="d-grid gap-3">
     <% 5.times do |i| %>
