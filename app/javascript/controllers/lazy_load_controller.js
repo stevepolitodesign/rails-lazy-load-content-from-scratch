@@ -26,7 +26,6 @@ export default class extends Controller {
       .catch((error) => {
         this.renderContent("Could not load data");
       });
-      
   }
 
   renderContent(content) {
