@@ -191,7 +191,7 @@ If you navigate to [http://localhost:3000/lazy_load/users](http://localhost:3000
 
 If you open the network tab you will see that the server responded with raw HTML without a layout.
 
-![Web response](./public/network_response.png)
+![Network response](./public/network_response.png)
 
 ### Step 2: Build a Stimulus Controller
 
