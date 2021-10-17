@@ -1,6 +1,6 @@
 # Lazy Load Content in Rails from Scratch
 
-Learn how to lazy load content in Rails without Hotwire.
+Are certain pages on your Rails app loading slowly? You might want to consider loading those requests in the background. It's easier than you think. In this tutorial I'll show you how to lazy load content in Rails without Hotwire.
 
 ![Demo](./public/demo.gif)
 
@@ -182,7 +182,7 @@ end
 > **What's Going On Here?**
 > 
 > - We create a [namespaced route and controller](https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing). This isn't required, but it helps keep our endpoints organized. We're also not limited to just `index` actions either.
-> - We set a [default](https://guides.rubyonrails.org/routing.html#defining-defaults) for those endpoints to [not render a layout](https://guides.rubyonrails.org layouts_and_rendering.html#options-for-render). This means that just the raw HTML for the partials will be returned.
+> - We set a [default](https://guides.rubyonrails.org/routing.html#defining-defaults) for those endpoints to [not render a layout](https://guides.rubyonrails.org/layouts_and_rendering.html#options-for-render). This means that just the raw HTML for the partials will be returned.
 > - We choose to create custom views for each endpoint, but we could use the existing views or partials if we wanted to. This is just personal preference.
 
 If you navigate to [http://localhost:3000/lazy_load/users](http://localhost:3000/lazy_load/users) you should see that the content has loaded without a layout.
@@ -279,7 +279,7 @@ function initilizeToolTips() {
 rails g controller Homescreens show
 ```
 
-2. Updated the routes.
+2. Update the routes.
 
 ```ruby
 # config/routes.rb
